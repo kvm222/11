@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.Vasundara - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --neon-pink: #55dcc8;
+            --neon-blue: #9000ff;
+            --neon-green: #ffea00;
+            --neon-purple: #eb9beb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+            border-radius: 4px;
+        }
+
+        /* Navbar Styles */
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1.5rem 2rem;
+        backdrop-filter: blur(10px);
+        background: rgba(10, 10, 10, 0); /* Set to fully transparent */
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+
+/* Remove border around the name */
+    .name {
+        font-size: 4.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple), var(--neon-green), var(--neon-blue));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: nameGlow 8s linear infinite;
+        padding: 2rem;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        border: none; /* Remove the border */
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        letter-spacing: 2px;
+    }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .nav-links a:hover::before {
+            left: 100%;
+        }
+
+        .nav-links a:hover {
+            background: var(--glass-bg);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                var(--neon-pink),
+                var(--neon-purple),
+                var(--neon-green),
+                var(--neon-blue)
+            );
+            animation: bgAnimation 15s linear infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes bgAnimation {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            z-index: 1;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .name {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple), var(--neon-green), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: nameGlow 8s linear infinite;
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            background-color: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--glass-bg);
+            border-radius: 15px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            animation: slideIn 1s ease-out;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+            animation: bounceIn 1s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .social-btn {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            transition: 0.5s;
+            opacity: 0;
+        }
+
+        .social-btn:hover::before {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--neon-pink), var(--neon-green), transparent);
+        }
+
+        /* Cards */
+        .flip-card {
+            background-color: transparent;
+            width: 320px;
+            height: 420px;
+            perspective: 1000px;
+            margin: 1rem;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            animation: cardAppear 1s ease-out;
+        }
+
+        @keyframes cardAppear {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .flip-card-front h3, .flip-card-back h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+        }
+
+        .flip-card-back p {
+            margin: 0.5rem 0;
+            font-size: 0.7rem;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 0.5rem;
+            }
+
+            .nav-links a {
+                padding: 0.3rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Highlight Animation */
+        .highlight {
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+            opacity: 0.3;
+            z-index: -1;
+            transform: skew(-12deg);
+        }
+
+        /* Loading Animation */
+        .loading-bar {
+            height: 4px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-green), var(--neon-blue));
+            z-index: 1001;
+            animation: loading 2s linear infinite;
+            background-size: 200% 100%;
+        }
+
+        .experience-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem;
+            max-width: 400px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .experience-title {
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+        }
+
+        .experience-duration {
+            font-size: 0.9rem;
+            color: var(--neon-pink);
+            margin-bottom: 1rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .project-card {
+            background: var(--glass-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+            opacity: 0;
+            transition: 0.3s;
+            z-index: -1;
+        }
+
+        .project-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .cert-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .cert-card {
+            background: var(--glass-bg);
+            border-radius: 15px;
+            padding: 1.5rem;
+            width: 300px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s;
+        }
+
+        .cert-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .cert-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .responsibility-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .resp-card {
+            background: var(--glass-bg);
+            border-radius: 15px;
+            padding: 1.5rem;
+            width: 300px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s;
+        }
+
+        .resp-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-bar"></div>
+    
+    <nav>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#certifications">Certifications</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="name">B.Vasundara</h1>
+            <p>I <span class="highlight">I am an ambitious undergraduate student pursuing a B.Tech</span> in Artificial Intelligence and Machine Learning. With a deep passion for emerging technologies, I am committed to mastering both the theoretical and practical aspects of AI and ML.<span class="highlight"> I have developed proficiency in Python, Java, and C</span>, and have a strong foundation in Data Structures, Algorithms, and Computer Organization. Driven by curiosity and a passion for innovation, I am eager to contribute to the AI field through internships or entry-level positions, collaborating with professionals to create impactful AI solutions that drive progress and positively influence society.</p>
+            
+            <div class="social-links">
+                <a href="https://github.com/bv8904" class="social-btn"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/b-vasundara-678b86253/" class="social-btn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/bv_894?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-btn"><i class="fab fa-instagram"></i></a>
+                <a href="https://drive.google.com/file/d/1fd6pKM_Lats3ph_vIlMtdEfGmVm7dfbx/view" class="social-btn"><i class="fas fa-file-alt"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem;">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>B.Tech CSE-AIML</h3>
+                        <p>CGPA: 9.45</p>
+                        <p>2022-2026</p>
+                        <h3>Intermidiate</h3>
+                        <p>Percentage: 97.5%</p>
+                        <h3>Secondary Schooling</h3>
+                        <p>CGPA: 10</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>C Programming</p>
+                        <p>C++ Language</p>
+                        <p>Cloud Computing</p>
+                        <p>Data Structures</p>
+                        <p>Data Visualization</p>
+                        <p>DBMS</p>
+                        <p>HTML + CSS</p>
+                        <p>Java</p>
+                        <p>Programming</p>
+                        <p>Python</p>
+                        <p>SQL</p>
+                        <p>Business Opportunities and Entrepreneurship</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add more sections as needed -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+            <div class="experience-card">
+                <h3 class="experience-title">AWS Data Engineering</h3>
+                <p class="experience-duration">Apr 2024 - Jun 2024</p>
+                <p>AICTE, Amazon Web Services (AWS)</p>
+                <ul style="list-style-type: none; padding: 0;">
+                    <li>• Practical experience in AWS Services like S3, Lambda and IAM</li>
+                    <li>• Data Ingestion and Storage</li>
+                    <li>• Data Transformation</li>
+                    <li>• Data Analytics and Querying</li>
+                    <li>• Implement Data Security</li>
+                    <li>• Automation and Deployment</li>
+                    <li>• Monitoring and Optimization</li>
+                    <li>• Build Real-Time Data Applications</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3 style="color: var(--neon-green)">Blog Website</h3>
+                <p>Full Stack Development</p>
+                <p class="experience-duration">Jun 2024</p>
+            </div>
+            <div class="project-card">
+                <h3 style="color: var(--neon-green)">Auction Alley</h3>
+                <p>Web Application Development</p>
+                <p class="experience-duration">Nov 2024</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="responsibilities">
+        <h2 class="section-title">Positions of Responsibility</h2>
+        <div class="responsibility-section">
+            <div class="resp-card">
+                <h3 style="color: var(--neon-pink)">Digital Marketing Head</h3>
+                <p>The LIT Club</p>
+                <p class="experience-duration">Oct 2023 - Sep 2024</p>
+            </div>
+            <div class="resp-card">
+                <h3 style="color: var(--neon-blue)">Chairperson</h3>
+                <p>IEEE Nanotechnology council SNIST</p>
+                <p class="experience-duration">Jun 2024 - Present</p>
+            </div>
+            <div class="resp-card">
+                <h3 style="color: var(--neon-green)">Treasurer</h3>
+                <p>IEEE Sensors council SNIST</p>
+                <p class="experience-duration">Jun 2024 - Present</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2 class="section-title">Certifications</h2>
+        <div class="cert-container">
+            <div class="cert-card">
+                <i class="fas fa-certificate cert-icon"></i>
+                <h3>Artificial Intelligence</h3>
+                <p>Hewlett-Packard</p>
+            </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate cert-icon"></i>
+                <h3>AWS Data Engineering</h3>
+                <p>AICTE</p>
+            </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate cert-icon"></i>
+                <h3>Android Developer</h3>
+                <p>Google for Developers</p>
+            </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate cert-icon"></i>
+                <h3>Information Security</h3>
+                <p>Infosys Springboard</p>
+            </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate cert-icon"></i>
+                <h3>SQL and Relational Databases</h3>
+                <p>IBM Cognitive Classes</p>
+            </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate cert-icon"></i>
+                <h3>Chatbot Development</h3>
+                <p>Cognitive Classes</p>
+            </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate cert-icon"></i>
+                <h3>Prompt Engineering</h3>
+                <p>IBM Cognitive Classes</p>
+            </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate cert-icon"></i>
+                <h3>Software Testing</h3>
+                <p>JP Morgan & Co</p>
+            </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate cert-icon"></i>
+                <h3>Power BI</h3>
+                <p>PwC</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
